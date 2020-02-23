@@ -5,8 +5,8 @@
 #ifndef MAIN_HANDGESTURE_H
 #define MAIN_HANDGESTURE_H
 
-// Set this to the directory containing the main.py Python file
-const char *hand_gesture_path = "/Users/yuhanliu/Documents/Hackathons/HOTH";
+// Set this to the hand.sh file that runs the python script
+const char *hand_gesture_path = "/Users/yuhanliu/Documents/Hackathons/HOTH/hand.sh";
 
 class HandGesture {
 public:
