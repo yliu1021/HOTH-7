@@ -1,0 +1,8 @@
+# Emacs
+*~
+
+.DS_Store
+.idea/
+
+venv/
+__pycache__/
