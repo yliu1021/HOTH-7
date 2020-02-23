@@ -10,12 +10,11 @@ def main(debug=False):
     inference_model = InferenceModel(threshold=0.75, gesture_duration_threshold=0.5, repeat_threshold=5)
     inference_model.start_inference()
     gesture_queue = inference_model.gesture_queue
-    print('Started inference loop')
     try:
         while True:
             gesture, confidence = gesture_queue.get(block=True)
-            print(gesture, confidence)
-            interface.receive_gesture(gesture)
+            print(gesture, confidence, flush=True)
+            # interface.receive_gesture(gesture)
             if debug:
                 print('{:.3f}: {}'.format(confidence, gesture))
     except KeyboardInterrupt:

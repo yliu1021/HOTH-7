@@ -16,30 +16,33 @@ HandGesture::HandGesture(const char *rd) : root_dir(rd) {
 #else
 
 #include <unistd.h>
-#include <fcntl.h>
 #include <cstdio>
+#include <string>
 
-HandGesture::HandGesture(const char *rd) : root_dir(rd) {
+using namespace std;
+
+HandGesture::HandGesture(const char *rd) {
+    string root_dir(rd);
+    string hand_file = root_dir + "hand.sh";
+
     int pipe_fd[2];
-
-    pid_t cpid;
 
     if (pipe(pipe_fd) == -1) {
         perror("pipe error");
         return;
     }
+    out_fd = pipe_fd[0];
 
-    cpid = fork();
+    pid_t cpid = fork();
     if (cpid == -1) {
-        perror("fork error");
+        perror("fork error\n");
         return;
     }
-    if (cpid == 0) {    /* Child reads from pipe */
+    if (cpid == 0) {
         close(STDOUT_FILENO);
         dup(pipe_fd[1]);
-        execlp("bash", "bash", rd, NULL);
-    } else {            /* Parent writes argv[1] to pipe */
-
+        close(pipe_fd[1]);
+        execlp("bash", "bash", hand_file.c_str(), root_dir.c_str(), hand_file.c_str(), NULL);
     }
 }
 
