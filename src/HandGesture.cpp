@@ -10,7 +10,7 @@
 
 HandGesture::HandGesture(const char *rd) : root_dir(rd) {
     // blah blah blah
-    std::cout < "hi" << std::end;
+    std::cout << "hi" << std::endl;
 }
 
 #else
