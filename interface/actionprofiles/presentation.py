@@ -1,152 +1,110 @@
 import pyautogui
 from handmodel import Gesture
-import os
-import osascript
 
 from . import default
 
 
-def switch_back():
-    title = 'Music Control'
-    text = 'Switching out of Music Controls'
-    os.system("""osascript -e 'display notification "{}" with title "{}"'""".format(text, title))
-
-
 def swipe_left():
-    switch_back()
-    return default.action_profile
+    return action_profile
 
 
 def swipe_right():
-    switch_back()
-    return default.action_profile
+    return action_profile
 
 
 def swipe_up():
-    switch_back()
-    return default.action_profile
+    return action_profile
 
 
 def swipe_down():
-    switch_back()
-    return default.action_profile
+    return action_profile
 
 
 def two_finger_up():
-    _, o, _ = osascript.run('get volume settings')
-    v = int(o.split(',')[0].split(':')[1]) # pray
-    v += 10
-    osascript.run(f'set volume output volume {v}')
     return action_profile
 
 
 def two_finger_down():
-    _, o, _ = osascript.run('get volume settings')
-    v = int(o.split(',')[0].split(':')[1])  # pray
-    v -= 10
-    osascript.run(f'set volume output volume {v}')
     return action_profile
 
 
 def two_finger_right():
-    osascript.run("""tell application "Music"
-                        next track
-                    end tell""")
+    pyautogui.press('left')
     return action_profile
 
 
 def two_finger_left():
-    osascript.run("""tell application "Music"
-                        previous track
-                    end tell""")
+    pyautogui.press('right')
     return action_profile
 
 
 def two_finger_away():
-    switch_back()
-    return default.action_profile
-
-
-def two_finger_in():
-    switch_back()
-    return default.action_profile
-
-
-def rolling_hand_forward():
-    switch_back()
-    return default.action_profile
-
-
-def rolling_hand_backward():
-    switch_back()
-    return default.action_profile
-
-
-def turning_hand_clockwise():
-    switch_back()
-    return default.action_profile
-
-
-def turning_hand_cclockwise():
-    switch_back()
-    return default.action_profile
-
-
-def zooming_in_full_hand():
-    switch_back()
-    return default.action_profile
-
-
-def zooming_out_full_hand():
-    switch_back()
-    return default.action_profile
-
-
-def zooming_in_two_fingers():
-    switch_back()
-    return default.action_profile
-
-
-def zooming_out_two_fingers():
-    switch_back()
-    return default.action_profile
-
-
-def pushing_hand_away():
-    switch_back()
-    return default.action_profile
-
-
-def pulling_hand_in():
-    switch_back()
-    return default.action_profile
-
-
-def thumb_up():
-    switch_back()
-    return default.action_profile
-
-
-def thumb_down():
-    switch_back()
-    return default.action_profile
-
-
-def shaking_hand():
-    switch_back()
-    return default.action_profile
-
-
-def stop_sign():
-    osascript.run("""tell application "Music"
-                        playpause
-                    end tell""")
     return action_profile
 
 
-def drumming_fingers():
-    switch_back()
+def two_finger_in():
+    return action_profile
+
+
+def rolling_hand_forward():
+    return action_profile
+
+
+def rolling_hand_backward():
+    return action_profile
+
+
+def turning_hand_clockwise():
+    return action_profile
+
+
+def turning_hand_cclockwise():
+    return action_profile
+
+
+def zooming_in_full_hand():
+    return action_profile
+
+
+def zooming_out_full_hand():
+    return action_profile
+
+
+def zooming_in_two_fingers():
+    return action_profile
+
+
+def zooming_out_two_fingers():
+    return action_profile
+
+
+def pushing_hand_away():
+    return action_profile
+
+
+def pulling_hand_in():
+    return action_profile
+
+
+def thumb_up():
+    return action_profile
+
+
+def thumb_down():
+    return action_profile
+
+
+def shaking_hand():
+    return action_profile
+
+
+def stop_sign():
+    pyautogui.press('esc')
     return default.action_profile
+
+
+def drumming_fingers():
+    return action_profile
 
 
 action_profile = {

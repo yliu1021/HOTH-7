@@ -2,14 +2,18 @@ import pyautogui
 from handmodel import Gesture
 import time
 import os
+import osascript
 
 from . import hand_shake
 from . import music
+from . import presentation
+from . import reading
 
 
 def swipe_left():
     pyautogui.hotkey('ctrl', 'right')
     return action_profile
+
 
 def swipe_right():
     pyautogui.hotkey('ctrl', 'left')
@@ -28,25 +32,25 @@ def swipe_down():
 
 def two_finger_up():
     for i in range(10):
-        pyautogui.scroll(-1)
+        pyautogui.scroll(-2)
     return action_profile
 
 
 def two_finger_down():
     for i in range(10):
-        pyautogui.scroll(1)
+        pyautogui.scroll(2)
     return action_profile
 
 
 def two_finger_right():
     for i in range(10):
-        pyautogui.hscroll(-1)
+        pyautogui.hscroll(-2)
     return action_profile
 
 
 def two_finger_left():
     for i in range(10):
-        pyautogui.hscroll(1)
+        pyautogui.hscroll(2)
     return action_profile
 
 
@@ -59,7 +63,9 @@ def two_finger_in():
 
 
 def rolling_hand_forward():
-    return action_profile
+    print('Dimming')
+    os.system('brightness 0.5')
+    return reading.action_profile
 
 
 def rolling_hand_backward():
@@ -67,10 +73,12 @@ def rolling_hand_backward():
 
 
 def turning_hand_clockwise():
+    pyautogui.hotkey('command', 'tab')
     return action_profile
 
 
 def turning_hand_cclockwise():
+    pyautogui.hotkey('command', 'shift', 'tab')
     return action_profile
 
 
@@ -117,7 +125,8 @@ def shaking_hand():
 
 
 def stop_sign():
-    return action_profile
+    pyautogui.hotkey('command', 'enter')
+    return presentation.action_profile
 
 
 def drumming_fingers():
