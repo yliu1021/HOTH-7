@@ -14,7 +14,7 @@ def main(debug=False):
         while True:
             gesture, confidence = gesture_queue.get(block=True)
             print(gesture, confidence, flush=True)
-            # interface.receive_gesture(gesture)
+            interface.receive_gesture(gesture)
             if debug:
                 print('{:.3f}: {}'.format(confidence, gesture))
     except KeyboardInterrupt:

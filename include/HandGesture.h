@@ -17,5 +17,4 @@ private:
     int out_fd;
 };
 
-
 #endif //MAIN_HANDGESTURE_H
